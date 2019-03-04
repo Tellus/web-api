@@ -183,6 +183,16 @@ class UserControllerTest(TestCase):
         response = requests.get(Test.url + 'User/{0}/settings'.format(self.gunnarId), headers=auth(self.gunnar)).json()
         check.equal(LargeData.timer1HourSettings['timerSeconds'], response['data']['timerSeconds'])
 
+    @test(skip_if_failed=['registerGunnar', 'userInfo'])
+    def settingsWeekDisplayMode(self, check):
+        'Set Week Display Mode'
+        response = requests.put(Test.url + 'User/{0}/settings'.format(self.gunnarId), json={'weekDisplayMode': 'day'},
+                                headers=auth(self.gunnar)).json()
+        ensureSuccess(response, check)
+        response = requests.get(Test.url + 'User/{0}/settings'.format(self.gunnarId), headers=auth(self.gunnar)).json()
+        check.equal(1, response['data']['weekDisplayMode'])
+
+
     @test(skip_if_failed=['registerGunnar', 'userInfo'], depends=['settingsSetTheme', 'settingsSetLauncherAnimationsOn',
                                                                   'settingsSetLauncherAnimationsOff'])
     def settingsMultiple(self, check):

@@ -132,6 +132,7 @@ timer1HourSettings = {
 
 allSettings = {
       "orientation": 2,
+      "weekDisplayMode": 1,
       "completeMark": 2,
       "cancelMark": 1,
       "defaultTimer": 2,
