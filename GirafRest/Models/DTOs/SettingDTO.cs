@@ -10,6 +10,8 @@ namespace GirafRest.Models.DTOs
     public enum DefaultTimer { hourglass = 1, analogClock = 2 }
     public enum Theme { girafYellow = 1, girafGreen = 2, girafRed = 3, androidBlue = 4}
 
+    public enum WeekDisplayMode{week = 0, day = 1};
+
     /// <summary>
     /// A Data Transfer Object for the user settings used by the launcher
     /// </summary>
@@ -20,6 +22,11 @@ namespace GirafRest.Models.DTOs
         /// </summary>
         [Required]
         public Orientation Orientation { get; set; }
+
+        /// <summary>
+        /// Preferred Week display mode of user
+        /// </summary>
+        public WeekDisplayMode WeekDisplayMode { get; set; }
         /// <summary>
         /// Preferred appearence of checked resources
         /// </summary>
