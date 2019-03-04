@@ -19,6 +19,12 @@ namespace GirafRest.Models
         [Required]
         public Orientation Orientation { get; set; }
         /// <summary>
+        /// Preferred week display mode
+        /// </summary>
+        [Required]
+        public WeekDisplayMode WeekDisplayMode { get; set; }
+        
+        /// <summary>
         /// Preferred appearence of checked resources
         /// </summary>
         [Required]
@@ -69,6 +75,7 @@ namespace GirafRest.Models
         public void UpdateFrom(SettingDTO newOptions)
         {
             this.Orientation = newOptions?.Orientation ?? this.Orientation;
+            this.WeekDisplayMode = newOptions?.WeekDisplayMode ?? this.WeekDisplayMode;
             this.CompleteMark = newOptions?.CompleteMark ?? this.CompleteMark;
             this.CancelMark = newOptions?.CancelMark ?? this.CancelMark;
             this.DefaultTimer = newOptions?.DefaultTimer ?? this.DefaultTimer;
@@ -114,6 +121,7 @@ namespace GirafRest.Models
         public Setting()
         {
             Orientation = Orientation.portrait;
+            WeekDisplayMode = WeekDisplayMode.week;
             CompleteMark = CompleteMark.Checkmark;
             CancelMark = CancelMark.Cross;
             DefaultTimer = DefaultTimer.analogClock;

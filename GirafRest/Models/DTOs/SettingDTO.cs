@@ -9,8 +9,7 @@ namespace GirafRest.Models.DTOs
     public enum CancelMark { Removed = 1, Cross = 2}
     public enum DefaultTimer { hourglass = 1, analogClock = 2 }
     public enum Theme { girafYellow = 1, girafGreen = 2, girafRed = 3, androidBlue = 4}
-
-    public enum WeekDisplayMode{week = 0, day = 1};
+    public enum WeekDisplayMode {week = 0, day = 1}
 
     /// <summary>
     /// A Data Transfer Object for the user settings used by the launcher
@@ -26,6 +25,7 @@ namespace GirafRest.Models.DTOs
         /// <summary>
         /// Preferred Week display mode of user
         /// </summary>
+        [Required]
         public WeekDisplayMode WeekDisplayMode { get; set; }
         /// <summary>
         /// Preferred appearence of checked resources
@@ -72,6 +72,7 @@ namespace GirafRest.Models.DTOs
         public SettingDTO(Setting options)
         {
             this.Orientation = options.Orientation;
+            this.WeekDisplayMode = options.WeekDisplayMode;
             this.CompleteMark = options.CompleteMark;
             this.CancelMark = options.CancelMark;
             this.DefaultTimer = options.DefaultTimer;
@@ -86,6 +87,7 @@ namespace GirafRest.Models.DTOs
         public SettingDTO()
         {
             Orientation = Orientation.portrait;
+            WeekDisplayMode = WeekDisplayMode.week;
             CompleteMark = CompleteMark.Checkmark;
             CancelMark = CancelMark.Cross;
             DefaultTimer = DefaultTimer.analogClock;

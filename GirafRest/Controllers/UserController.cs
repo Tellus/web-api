@@ -508,7 +508,7 @@ namespace GirafRest.Controllers
 
             user.Settings.UpdateFrom(options);
             // lets update the weekday colours
-
+            
             await _giraf._context.SaveChangesAsync();
 
             return new Response<SettingDTO>(new SettingDTO(user.Settings));
@@ -525,6 +525,7 @@ namespace GirafRest.Controllers
         private ErrorCode? ValidateOptions(SettingDTO options)
         {
             if (!(Enum.IsDefined(typeof(Orientation), options.Orientation)) ||
+                !(Enum.IsDefined(typeof(WeekDisplayMode), options.WeekDisplayMode)) ||
                 !(Enum.IsDefined(typeof(CompleteMark), options.CompleteMark)) ||
                 !(Enum.IsDefined(typeof(CancelMark), options.CancelMark)) ||
                 !(Enum.IsDefined(typeof(DefaultTimer), options.DefaultTimer)) ||
