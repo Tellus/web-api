@@ -25,6 +25,12 @@ namespace GirafRest.Models
         public WeekDisplayMode WeekDisplayMode { get; set; }
         
         /// <summary>
+        ///  Preferred number of days to see in the future, This value is only used in-case WeekDisplayMode = day.
+        /// </summary>
+        [Required]
+        public int WeekDisplayNumOfDays { get; set; }
+        
+        /// <summary>
         /// Preferred appearence of checked resources
         /// </summary>
         [Required]
@@ -76,6 +82,7 @@ namespace GirafRest.Models
         {
             this.Orientation = newOptions?.Orientation ?? this.Orientation;
             this.WeekDisplayMode = newOptions?.WeekDisplayMode ?? this.WeekDisplayMode;
+            this.WeekDisplayNumOfDays = newOptions?.WeekDisplayNumOfDays ?? this.WeekDisplayNumOfDays;
             this.CompleteMark = newOptions?.CompleteMark ?? this.CompleteMark;
             this.CancelMark = newOptions?.CancelMark ?? this.CancelMark;
             this.DefaultTimer = newOptions?.DefaultTimer ?? this.DefaultTimer;
@@ -122,6 +129,7 @@ namespace GirafRest.Models
         {
             Orientation = Orientation.portrait;
             WeekDisplayMode = WeekDisplayMode.week;
+            WeekDisplayNumOfDays = 5;
             CompleteMark = CompleteMark.Checkmark;
             CancelMark = CancelMark.Cross;
             DefaultTimer = DefaultTimer.analogClock;

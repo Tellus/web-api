@@ -27,6 +27,12 @@ namespace GirafRest.Models.DTOs
         /// </summary>
         [Required]
         public WeekDisplayMode WeekDisplayMode { get; set; }
+        
+        /// <summary>
+        ///  Preferred number of days to see in the future, This value is only used in-case WeekDisplayMode = day.
+        /// </summary>
+        [Required]
+        public int WeekDisplayNumOfDays { get; set; }
         /// <summary>
         /// Preferred appearence of checked resources
         /// </summary>
@@ -73,6 +79,7 @@ namespace GirafRest.Models.DTOs
         {
             this.Orientation = options.Orientation;
             this.WeekDisplayMode = options.WeekDisplayMode;
+            this.WeekDisplayNumOfDays = options.WeekDisplayNumOfDays;
             this.CompleteMark = options.CompleteMark;
             this.CancelMark = options.CancelMark;
             this.DefaultTimer = options.DefaultTimer;
@@ -88,6 +95,7 @@ namespace GirafRest.Models.DTOs
         {
             Orientation = Orientation.portrait;
             WeekDisplayMode = WeekDisplayMode.week;
+            WeekDisplayNumOfDays = 5;
             CompleteMark = CompleteMark.Checkmark;
             CancelMark = CancelMark.Cross;
             DefaultTimer = DefaultTimer.analogClock;
